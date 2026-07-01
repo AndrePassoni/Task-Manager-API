@@ -1,0 +1,530 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Task Manager
+meta:
+  id: wrk_9d4aefd4dc624cd1b0898668e4b4c28e
+  created: 1782860612550
+  modified: 1782860612550
+  description: ""
+collection:
+  - name: Users
+    meta:
+      id: fld_45fc7ac33ada4a36a9478cc57f8fb8e7
+      created: 1782860644243
+      modified: 1782868644618
+      sortKey: -1782860644243
+      description: ""
+    children:
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE }}"
+        name: Create
+        meta:
+          id: req_b67d74130ac74a79ad3145e6797f0150
+          created: 1782860647991
+          modified: 1782911834052
+          isPrivate: false
+          description: ""
+          sortKey: -1782860648004
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Ana",
+            	"email": "ana@email.com",
+            	"password": "123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      RESOURCE: users
+    environmentPropertyOrder:
+      "&":
+        - RESOURCE
+  - name: Sessions
+    meta:
+      id: fld_4b7466cf606c4207bd59b18d7d4d7db5
+      created: 1782868298525
+      modified: 1782872020806
+      sortKey: -1782868298525
+      description: ""
+    children:
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE }}"
+        name: Create
+        meta:
+          id: req_bf224362978f4fb49b9fe8938badc8ea
+          created: 1782868302637
+          modified: 1782868777550
+          isPrivate: false
+          description: ""
+          sortKey: -1782868302637
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email": "andre@email.com",
+            	"password": "123456"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      RESOURCE: sessions
+    environmentPropertyOrder:
+      "&":
+        - RESOURCE
+  - name: Teams
+    meta:
+      id: fld_84997eb40a544fd09d60bf4b9bc2c29e
+      created: 1782871991757
+      modified: 1782908436930
+      sortKey: -1782871991757
+      description: ""
+    children:
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE }}"
+        name: Create
+        meta:
+          id: req_773e02cd67484e568ea5e03434d39832
+          created: 1782871995403
+          modified: 1782872152649
+          isPrivate: false
+          description: ""
+          sortKey: -1782871995403
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Team Batata",
+            	"description": "Equipe responsável pelo arroz"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_bf224362978f4fb49b9fe8938badc8ea',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE }}"
+        name: Index
+        meta:
+          id: req_d0f69da84bbb4946a433eceb41fb15b1
+          created: 1782872250537
+          modified: 1782872302138
+          isPrivate: false
+          description: ""
+          sortKey: -1782872250537
+        method: GET
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_bf224362978f4fb49b9fe8938badc8ea',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE }}/44684d7e-0c09-44e7-9a03-ab9d65fa7224"
+        name: Edit
+        meta:
+          id: req_38e4c0c89dc140c4a40c80d35a0e7131
+          created: 1782872306191
+          modified: 1782912032327
+          isPrivate: false
+          description: ""
+          sortKey: -1782872306191
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Time Batata",
+            	"description": "Equipe responsável"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_bf224362978f4fb49b9fe8938badc8ea',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE }}/84522191-0a48-4e2d-8558-2de8a9d3d11b"
+        name: Remove
+        meta:
+          id: req_4c8c1d4c2b384da297e831fc8454820a
+          created: 1782908341196
+          modified: 1782909557959
+          isPrivate: false
+          description: ""
+          sortKey: -1782908341196
+        method: DELETE
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_bf224362978f4fb49b9fe8938badc8ea',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      RESOURCE: teams
+    environmentPropertyOrder:
+      "&":
+        - RESOURCE
+  - name: Team Members
+    meta:
+      id: fld_d5297671102c4dc7b27145ae8bff4e35
+      created: 1782908407727
+      modified: 1782908451233
+      sortKey: -1782908407727
+      description: ""
+    children:
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE
+          }}/44684d7e-0c09-44e7-9a03-ab9d65fa7224/members"
+        name: Create
+        meta:
+          id: req_75b5220171094eabbc2efea8801f9df6
+          created: 1782908461094
+          modified: 1782912403123
+          isPrivate: false
+          description: ""
+          sortKey: -1782908461094
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"userId": "9b65c649-4a09-41ab-beee-8d1a0a0f6fd4"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_bf224362978f4fb49b9fe8938badc8ea',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE
+          }}/ae9389d2-4282-4bc2-98e0-09ec8e38d866/members/c70ed412-986d-47af-8c\
+          9b-cd41b2a4effb"
+        name: Remove
+        meta:
+          id: req_1c09b2ec67634c038b42c494033ea31a
+          created: 1782908655820
+          modified: 1782910233727
+          isPrivate: false
+          description: ""
+          sortKey: -1782908655820
+        method: DELETE
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_bf224362978f4fb49b9fe8938badc8ea',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE
+          }}/44684d7e-0c09-44e7-9a03-ab9d65fa7224/members"
+        name: Index
+        meta:
+          id: req_3005bec8362645c6878cce07894a7aee
+          created: 1782908776414
+          modified: 1782912208155
+          isPrivate: false
+          description: ""
+          sortKey: -1782908776414
+        method: GET
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_bf224362978f4fb49b9fe8938badc8ea',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      RESOURCE: teams
+    environmentPropertyOrder:
+      "&":
+        - RESOURCE
+  - name: Tasks
+    meta:
+      id: fld_5c13d646f24340ab83ba4c4f57af10c6
+      created: 1782908866363
+      modified: 1782909445633
+      sortKey: -1782908866363
+      description: ""
+    children:
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE }}"
+        name: Create
+        meta:
+          id: req_4ceecec4f4e64aa0ab1ef3744eca234d
+          created: 1782908900114
+          modified: 1782912286839
+          isPrivate: false
+          description: ""
+          sortKey: -1782908900114
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "title": "Implementar endpoints do Insomnia",
+              "description": "Criar requisições e testar fluxos no Insomnia",
+              "priority": "high", 
+              "assignedTo": "b90b0bcd-6e6c-4332-bd48-12c08feaa374",
+              "teamId": "44684d7e-0c09-44e7-9a03-ab9d65fa7224"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_bf224362978f4fb49b9fe8938badc8ea',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE }}"
+        name: Index
+        meta:
+          id: req_e6d1a2e281d44ce99d5b84a59056b277
+          created: 1782908995226
+          modified: 1782909094233
+          isPrivate: false
+          description: ""
+          sortKey: -1782908995226
+        method: GET
+        parameters:
+          - name: status
+            value: completed
+            description: ""
+            disabled: true
+          - name: priority
+            value: high
+            description: ""
+            disabled: true
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_bf224362978f4fb49b9fe8938badc8ea',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE }}/060e38b2-ed74-45e2-afdf-72cb3129b47f"
+        name: Edit
+        meta:
+          id: req_4d94d6b95b9a44c7ac17a35666c6baf8
+          created: 1782909108030
+          modified: 1782912356774
+          isPrivate: false
+          description: ""
+          sortKey: -1782909108030
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "title": "Novo título da tarefa",
+              "status": "in_progress" 
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_bf224362978f4fb49b9fe8938badc8ea',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE
+          }}/060e38b2-ed74-45e2-afdf-72cb3129b47f/assign"
+        name: Assign
+        meta:
+          id: req_36b3c552a36d4915b4cabe4728f378c1
+          created: 1782909252577
+          modified: 1782912464246
+          isPrivate: false
+          description: ""
+          sortKey: -1782909252577
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+              "assignedTo": "9b65c649-4a09-41ab-beee-8d1a0a0f6fd4"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_bf224362978f4fb49b9fe8938badc8ea',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE }}/060e38b2-ed74-45e2-afdf-72cb3129b47f"
+        name: Remove
+        meta:
+          id: req_f6d44f3bc2d9470cbf1e6dd0909a3dfe
+          created: 1782909343110
+          modified: 1782912472938
+          isPrivate: false
+          description: ""
+          sortKey: -1782909343110
+        method: DELETE
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_bf224362978f4fb49b9fe8938badc8ea',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      RESOURCE: tasks
+    environmentPropertyOrder:
+      "&":
+        - RESOURCE
+  - name: Tasks History
+    meta:
+      id: fld_0a030f534d9f41f6a6f43e3d5c12b5b6
+      created: 1782909430757
+      modified: 1782909452335
+      sortKey: -1782909430757
+      description: ""
+    children:
+      - url: "{{ _.BASE_URL }}/{{ _.RESOURCE
+          }}/6af87e1c-f291-44f4-b4d3-581774d97671/history"
+        name: Index
+        meta:
+          id: req_56704cb9cbf24f2b98d4055c19c2905a
+          created: 1782909454841
+          modified: 1782910517002
+          isPrivate: false
+          description: ""
+          sortKey: -1782909454841
+        method: GET
+        authentication:
+          type: bearer
+          token: "{% response 'body', 'req_bf224362978f4fb49b9fe8938badc8ea',
+            'b64::JC50b2tlbg==::46b', 'always', 60 %}"
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+    environment:
+      RESOURCE: tasks
+    environmentPropertyOrder:
+      "&":
+        - RESOURCE
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_bcabacc177015cd968f557c7a76f785bb9b43011
+    created: 1782860614784
+    modified: 1782860614784
+environments:
+  name: Base Environment
+  meta:
+    id: env_bcabacc177015cd968f557c7a76f785bb9b43011
+    created: 1782860614296
+    modified: 1782860614296
+    isPrivate: false
+  subEnvironments:
+    - name: dev
+      meta:
+        id: env_f0e233012ed34a6f88562d3347d5d42b
+        created: 1782860661343
+        modified: 1782860772298
+        isPrivate: false
+        sortKey: 1782860661343
+      data:
+        BASE_URL: http://localhost:3333
+      color: "#11ff00"
