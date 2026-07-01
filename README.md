@@ -53,8 +53,8 @@ Ensure you have the following installed on your machine:
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
-   cd task-manager
+   git clone https://github.com/AndrePassoni/Task-Manager-API
+   cd Task-Manager-API
    ```
 
 2. **Install dependencies:**
@@ -126,3 +126,8 @@ npm run test
 
 ### 📜 Tasks History
 * `GET /tasks/:taskId/history` - Fetch chronological status audit logs for a task
+
+---
+<p align="center">
+  Made with 💜 by <a href="https://github.com/AndrePassoni">André Passoni</a>
+</p>
