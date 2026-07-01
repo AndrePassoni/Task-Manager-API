@@ -45,9 +45,22 @@ export class TeamMembersController {
                 teamsId: teamId,
                 userId: userId,
             },
+            include: {
+                teams: {
+                    select: {
+                        name: true,
+                    },
+                },
+            },
         })
 
-        return response.status(201).json(member)
+        return response.status(201).json({
+            id: member.id,
+            userId: member.userId,
+            teamsId: member.teamsId,
+            teamName: member.teams.name,
+            createdAt: member.createdAt,
+        })
     }
 
     async delete(request: Request, response: Response) {
@@ -88,6 +101,11 @@ export class TeamMembersController {
         const members = await prisma.teamMembers.findMany({
             where: { teamsId: teamId },
             include: {
+                teams: {
+                    select: {
+                        name: true,
+                    },
+                },
                 user: {
                     select: {
                         id: true,
@@ -99,6 +117,15 @@ export class TeamMembersController {
             },
         })
 
-        return response.json(members)
+        const formattedMembers = members.map((member) => ({
+            id: member.id,
+            createdAt: member.createdAt,
+            team: {
+                name: member.teams.name,
+            },
+            user: member.user,
+        }))
+
+        return response.json(formattedMembers)
     }
 }

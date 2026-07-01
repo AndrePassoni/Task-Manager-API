@@ -7,7 +7,7 @@ export class TeamsController {
     async create(request: Request, response: Response) {
         const bodySchema = z.object({
             name: z.string().trim().min(2),
-            description: z.string().trim().min(2),
+            description: z.string().trim().optional(),
         })
 
         const { name, description } = bodySchema.parse(request.body)
@@ -15,7 +15,7 @@ export class TeamsController {
         const team = await prisma.teams.create({
             data: {
                 name,
-                description,
+                description: description ?? "",
             },
         })
 
@@ -32,7 +32,7 @@ export class TeamsController {
 
         const bodySchema = z.object({
             name: z.string().trim().min(2).optional(),
-            description: z.string().trim().min(2).optional(),
+            description: z.string().trim().optional(),
         })
 
         const { name, description } = bodySchema.parse(request.body)
