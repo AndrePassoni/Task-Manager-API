@@ -97,6 +97,33 @@ describe("Teams and Members Flow", () => {
         expect(response.body[0].name).toBe("Development Team")
     })
 
+    it("should allow admin to update a team name and description", async () => {
+        const team = await prisma.teams.create({
+            data: {
+                name: "Old Team Name",
+                description: "Old Description",
+            },
+        })
+
+        const response = await request(app)
+            .put(`/teams/${team.id}`)
+            .set("Authorization", `Bearer ${adminToken}`)
+            .send({
+                name: "New Team Name",
+                description: "New Description",
+            })
+
+        expect(response.status).toBe(200)
+        expect(response.body.name).toBe("New Team Name")
+        expect(response.body.description).toBe("New Description")
+
+        const updatedTeam = await prisma.teams.findUnique({
+            where: { id: team.id },
+        })
+        expect(updatedTeam?.name).toBe("New Team Name")
+        expect(updatedTeam?.description).toBe("New Description")
+    })
+
     it("should allow admin to add a member to a team", async () => {
         const team = await prisma.teams.create({
             data: {
